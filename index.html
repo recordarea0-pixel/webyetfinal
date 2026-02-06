@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, initial-scale=0.3, minimum-scale=0.1, maximum-scale=2.0, user-scalable=yes">
+    <title>Panti Asuhan Wisma Karya Bakti - Yayasan Oto Iskandar Dinata</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* ===== SECTION STYLING ===== */
+        section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Overlay untuk semua section */
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 1;
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Content wrapper */
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            color: white;
+            animation: slideUp 1s ease-out;
+        }
+
+        /* ===== BACKGROUND IMAGES ===== */
+        #hero {
+            background-image: url('herobg1.png');
+        }
+
+        #about {
+            background-image: url('aboutbg2.png');
+        }
+
+        #visi-misi {
+            background-image: url('visimisibg3.png');
+        }
+
+        #program {
+            background-image: url('Programbg4.png');
+        }
+
+        #asrama {
+            background-image: url('Asramabg5.png');
+        }
+
+        #tahfidz {
+            background-image: url('tahfidzbg6.png');
+        }
+
+        #ekosistem {
+            background-image: url('Ekosistembg7.png');
+        }
+
+        #pendidikan {
+            background-image: url('Pendidikanbg8.png');
+        }
+
+        #pengabdian {
+            background-image: url('Pengabdianbg9.png');
+        }
+
+        #sarjana {
+            background-image: url('Sarjanabg10.png');
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease-out 0.3s both;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid #fff;
+            display: inline-block;
+            padding-bottom: 10px;
+            animation: fadeInDown 1s ease-out 0.5s both;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 30, 30, 0.85) 100%);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            transform: translateY(-2px);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid white;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+            color: #333;
+            transform: scale(1.05);
+            animation: none;
+        }
+
+        /* ===== CARDS ===== */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== HIGHLIGHT BOX ===== */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid rgba(255, 255, 255, 0.8);
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .highlight-box ul li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ===== SCROLL INDICATOR ===== */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '⌄';
+            color: white;
+            font-size: 3rem;
+            display: block;
+        }
+
+        /* ===== SOCIAL MEDIA & CONTACT ===== */
+        .social-media-section {
+            margin-top: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-media-section h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-link i {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+
+        .social-link .social-text {
+            flex: 1;
+        }
+
+        .social-link .social-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .social-link .social-value {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Icon Colors */
+        .social-link.instagram:hover i { color: #E4405F; }
+        .social-link.facebook:hover i { color: #1877F2; }
+        .social-link.youtube:hover i { color: #FF0000; }
+        .social-link.whatsapp:hover i { color: #25D366; }
+        .social-link.email:hover i { color: #EA4335; }
+        .social-link.location:hover i { color: #4285F4; }
+
+        .bank-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .bank-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .bank-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .bank-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .bank-card p {
+            font-size: 1rem;
+            margin: 5px 0;
+            animation: none;
+        }
+
+        .account-number {
+            font-size: 1.2rem !important;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.9) 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        footer p {
+            margin: 5px 0;
+            animation: none;
+        }
+
+        /* Fix untuk mobile - hanya background attachment */
+        @media (max-width: 768px) {
+            section {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#hero">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#visi-misi">Visi & Misi</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#asrama">Asrama</a></li>
+            <li><a href="#tahfidz">Tahfidz</a></li>
+            <li><a href="#ekosistem">Ekosistem</a></li>
+            <li><a href="#pendidikan">Pendidikan</a></li>
+            <li><a href="#pengabdian">Pengabdian</a></li>
+            <li><a href="#sarjana">Sarjana</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="content">
+            <h1>Panti Asuhan Wisma Karya Bakti</h1>
+            <p>Membentuk generasi yang berakhlak mulia, berilmu, dan memiliki keterampilan hidup yang baik untuk masa depan yang lebih cerah. Di bawah naungan Yayasan Oto Iskandar Dinata, kami berkomitmen memberikan kehidupan yang lebih baik bagi anak-anak yatim, piatu, yatim piatu, dan dhuafa.</p>
+            <a href="#about" class="btn">Pelajari Lebih Lanjut</a>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="content">
+            <h2>Tentang Kami</h2>
+            <p>Panti Asuhan Wisma Karya Bakti adalah lembaga sosial yang berada di bawah naungan Yayasan Oto Iskandar Dinata. Kami berkomitmen untuk memberikan kehidupan yang lebih baik bagi anak-anak yatim, piatu, yatim piatu, dan dhuafa.</p>
+            <p>Dengan pendekatan holistik yang menggabungkan pendidikan agama, akademik, dan keterampilan hidup, kami berupaya membentuk generasi yang tangguh, berakhlak mulia, dan siap menghadapi tantangan masa depan.</p>
+            <p>Sejak berdiri, kami telah mengalami pertumbuhan yang signifikan, dari awalnya hanya membina 6 anak asuh hingga kini telah dipercaya untuk membina 135 anak dengan berbagai program pembinaan yang komprehensif. Perjalanan panjang ini menjadi bukti kepercayaan masyarakat terhadap komitmen kami dalam membangun masa depan anak-anak bangsa.</p>
+        </div>
+    </section>
+
+    <!-- Visi Misi Section -->
+    <section id="visi-misi">
+        <div class="content">
+            <h2>Visi & Misi</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <h3>Visi</h3>
+                    <p>Visi kami adalah agar di kemudian hari memiliki generasi potensial yang memiliki mental spiritual yang kuat (Aqidah), akhlak yang mulia, ilmu pengetahuan dan keterampilan yang baik.</p>
+                </div>
+                <div class="card">
+                    <h3>Misi</h3>
+                    <p>Menyiapkan dan membina kader-kader dengan mengajar agama sebagai modal terbaik pada kehidupan dewasa ini dan mengajarkan serta melatih keterampilan sesuai kebutuhan masa kini.</p>
+                    <p>Kami mengintegrasikan nilai-nilai Islam dengan ilmu pengetahuan dan keterampilan praktis untuk mempersiapkan generasi yang siap menghadapi tantangan zaman.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section id="program">
+        <div class="content">
+            <h2>Program Fokus Unggulan</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <h3>🏠 Asrama Layak Huni</h3>
+                    <p>Mendirikan asrama anak asuh untuk menetap layak tinggal untuk menunjang kegiatan belajar mengajar sehari-hari dengan fasilitas lengkap dan nyaman.</p>
+                </div>
+                <div class="card">
+                    <h3>📖 Generasi Al-Qur'an</h3>
+                    <p>Mewujudkan generasi Al-Qur'an yang mampu menghafal dan mengaplikasikannya dalam kehidupan sehari-hari dengan kreativitas, inovasi, dan akhlak mulia.</p>
+                </div>
+                <div class="card">
+                    <h3>🌱 Pertanian & Peternakan</h3>
+                    <p>Pertanian organik, peternakan zero waste, ekonomi sirkular - menjaga lingkungan dan kembali ke alam dengan prinsip keberlanjutan.</p>
+                </div>
+                <div class="card">
+                    <h3>🎯 Pengembangan Bakat</h3>
+                    <p>Mengembangkan bakat anak dalam minatnya: Taekwondo, Musik, Silat, Futsal, Marawis, Pidato, Menjahit, dan Hadroh.</p>
+                </div>
+                <div class="card">
+                    <h3>📚 Pendidikan Formal</h3>
+                    <p>Bina baca tulis Al-Qur'an, Bina Tahfiz Al-Qur'an, Bina Pertanian Organik, Sekolah Menengah Pertama, Sekolah Menengah Atas hingga Sarjana.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Asrama Section -->
+    <section id="asrama">
+        <div class="content">
+            <h2>Fasilitas Asrama</h2>
+            <p>Mendirikan asrama anak asuh untuk menetap layak tinggal untuk menunjang kegiatan belajar mengajar sehari-hari. Kami menyediakan fasilitas lengkap yang dirancang untuk mendukung perkembangan optimal anak-anak asuh dalam berbagai aspek kehidupan.</p>
+            <div class="cards-container">
+                <div class="card">
+                    <h3>🏛️ Aula</h3>
+                    <p>Ruang serbaguna untuk berbagai kegiatan, acara, dan pertemuan yang mendukung pengembangan soft skill anak asuh.</p>
+                </div>
+                <div class="card">
+                    <h3>⚽ Lapangan</h3>
+                    <p>Area olahraga yang luas untuk kegiatan fisik, futsal, dan pengembangan bakat di bidang atletik.</p>
+                </div>
+                <div class="card">
+                    <h3>🕌 Masjid</h3>
+                    <p>Tempat ibadah yang menjadi pusat kegiatan spiritual dan pembinaan keagamaan anak-anak asuh.</p>
+                </div>
+                <div class="card">
+                    <h3>💻 Lab Komputer</h3>
+                    <p>Fasilitas teknologi modern untuk pembelajaran digital dan pengembangan keterampilan teknologi informasi.</p>
+                </div>
+                <div class="card">
+                    <h3>🏢 Kantor</h3>
+                    <p>Pusat administrasi dan koordinasi seluruh kegiatan panti asuhan untuk pelayanan yang terorganisir.</p>
+                </div>
+                <div class="card">
+                    <h3>📚 Perpustakaan</h3>
+                    <p>Koleksi buku dan referensi yang mendukung pembelajaran dan menumbuhkan budaya literasi.</p>
+                </div>
+                <div class="card">
+                    <h3>🌿 Lahan Permaculture</h3>
+                    <p>Area pertanian organik untuk pembelajaran praktis sistem pertanian berkelanjutan dan ramah lingkungan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tahfidz Section -->
+    <section id="tahfidz">
+        <div class="content">
+            <h2>Program Tahfidz Al-Qur'an</h2>
+            <p>Generasi Al-Qur'an adalah sekelompok individu yang berpegang teguh pada ajaran Islam dengan menjadikan Al-Qur'an sebagai pedoman utama dalam kehidupan. Mereka tidak hanya hafal ayat-ayat suci, tetapi juga mampu memahami, menghayati, dan mengaplikasikannya dalam berbagai aspek kehidupan sehari-hari dengan kreativitas, inovasi, dan akhlak mulia.</p>
+            <p>Program menghafal Al-Qur'an kami menggunakan metode yang efektif dan pembimbing yang berpengalaman. Target hafalan disesuaikan dengan kemampuan dan konsistensi santri dengan pendampingan intensif untuk memastikan kualitas hafalan yang terjaga.</p>
+            
+            <div class="highlight-box">
+                <h3>📚 Program Pendidikan Terbuka untuk Masyarakat Umum</h3>
+                <p>Kami membuka kesempatan bagi masyarakat umum untuk mengikuti program Tahfidz Al-Qur'an kami. Program pengabdian masyarakat ini dirancang untuk memberikan akses pendidikan Al-Qur'an yang berkualitas kepada siapa saja yang ingin memperdalam ilmu agama dan menghafal Al-Qur'an.</p>
+                <ul>
+                    <li>Kelas Tahfidz untuk anak-anak (usia 7-12 tahun)</li>
+                    <li>Kelas Tahfidz untuk remaja (usia 13-17 tahun)</li>
+                    <li>Kelas Tahfidz untuk dewasa (18+ tahun)</li>
+                    <li>Program Tahsin (perbaikan bacaan Al-Qur'an)</li>
+                    <li>Program Tahfidz intensif untuk hafal 30 juz</li>
+                    <li>Pembinaan akhlak dan karakter Islami</li>
+                </ul>
+                <p style="margin-top: 20px;">Jadwal pembelajaran fleksibel disesuaikan dengan kebutuhan peserta. Pendaftaran terbuka sepanjang tahun dengan sistem pembelajaran yang terstruktur dan terukur.</p>
+            </div>
+
+            <p>Melalui program tahfidz ini, kami membentuk karakter anak-anak yang kuat dalam iman, berakhlak mulia, dan menjadikan Al-Qur'an sebagai kompas kehidupan mereka di era modern ini.</p>
+            <a href="https://wa.me/6282310338818?text=Assalamualaikum,%20saya%20ingin%20bertanya%20tentang%20Program%20Tahfidz" class="btn">Bergabung Bersama Kami</a>
+        </div>
+    </section>
+
+    <!-- Ekosistem Section -->
+    <section id="ekosistem">
+        <div class="content">
+            <h2>Ekosistem Hidup Berkelanjutan</h2>
+            <p>Sistem ini memandang kehidupan sebagai satu kesatuan yang saling terhubung antara manusia, tanah, air, tanaman, dan hewan, sebagaimana diajarkan dalam Al-Qur'an untuk menjaga keseimbangan dan amanah memelihara bumi. Melalui prinsip zero waste dan ekonomi sirkular, setiap sumber daya dimanfaatkan kembali agar lingkungan tetap lestari dan berkelanjutan.</p>
+            
+            <div class="highlight-box">
+                <h3>🌾 Program Pelatihan Pertanian Organik Terbuka untuk Umum</h3>
+                <p>Kami mengundang masyarakat umum untuk belajar dan berpartisipasi dalam program ekosistem hidup berkelanjutan. Program pengabdian masyarakat ini bertujuan memberikan pengetahuan dan keterampilan praktis dalam pertanian organik dan pengelolaan lingkungan yang ramah alam.</p>
+                <ul>
+                    <li>Pelatihan pertanian organik dan permaculture untuk pemula</li>
+                    <li>Workshop komposting dan pengelolaan sampah organik</li>
+                    <li>Kelas budidaya tanaman sayuran tanpa pestisida</li>
+                    <li>Pelatihan peternakan terintegrasi dan zero waste</li>
+                    <li>Program magang pertanian berkelanjutan (1-3 bulan)</li>
+                    <li>Konsultasi gratis untuk memulai urban farming</li>
+                    <li>Penyediaan bibit dan starter kit untuk peserta</li>
+                </ul>
+                <p style="margin-top: 20px;">Setiap peserta akan mendapatkan sertifikat dan kesempatan untuk terus berkonsultasi dengan mentor kami. Kami juga menyediakan area praktik langsung di lahan permaculture panti asuhan.</p>
+            </div>
+
+            <div class="cards-container">
+                <div class="card">
+                    <h3>🌾 Pertanian Organik</h3>
+                    <p>Sistem pertanian ramah lingkungan yang mengajarkan anak-anak untuk kembali ke alam dan memahami siklus kehidupan alami tanpa bahan kimia berbahaya. Produk organik yang dihasilkan memenuhi standar kesehatan dan kelestarian lingkungan.</p>
+                </div>
+                <div class="card">
+                    <h3>♻️ Zero Waste</h3>
+                    <p>Pengelolaan limbah dengan prinsip tanpa sampah, di mana setiap material dimanfaatkan kembali untuk menciptakan ekonomi sirkular yang berkelanjutan. Limbah organik menjadi kompos, limbah ternak menjadi biogas dan pupuk.</p>
+                </div>
+                <div class="card">
+                    <h3>🐄 Peternakan Terintegrasi</h3>
+                    <p>Sistem peternakan yang terintegrasi dengan pertanian, menciptakan ekosistem yang saling mendukung dan meminimalkan limbah. Kotoran ternak menjadi pupuk organik, sementara sisa panen menjadi pakan ternak berkualitas.</p>
+                </div>
+                <div class="card">
+                    <h3>🌍 Menjaga Lingkungan</h3>
+                    <p>Pendidikan lingkungan hidup yang mengajarkan tanggung jawab terhadap bumi sebagai amanah dari Allah SWT untuk generasi mendatang. Setiap anak diajarkan untuk mencintai alam dan menjadi guardian of the earth.</p>
+                </div>
+            </div>
+
+            <a href="https://wa.me/6282310338818?text=Assalamualaikum,%20saya%20ingin%20bergabung%20dalam%20Program%20Ekosistem%20Berkelanjutan" class="btn">Daftar Program Pelatihan</a>
+        </div>
+    </section>
+
+    <!-- Pendidikan Section -->
+    <section id="pendidikan">
+        <div class="content">
+            <h2>Pendidikan Formal untuk Semua</h2>
+            <p>Membantu Pemerintah dalam hal pendidikan bahwasannya setiap warga negara Indonesia berhak mendapatkan pendidikan sesuai dengan UUD 1945 sebagai berikut:</p>
+            <p><strong>Pasal 31 UUD 1945:</strong></p>
+            <p>"Setiap warga negara berhak mendapatkan pendidikan. Setiap warga negara wajib mengikuti pendidikan dasar dan pemerintah wajib membiayainya. Pemerintah mengusahakan dan menyelenggarakan satu sistem pendidikan nasional, yang meningkatkan keimanan dan ketakwaan serta akhlak mulia dalam rangka mencerdaskan kehidupan bangsa, yang diatur dengan undang-undang."</p>
+            <p>Dengan landasan konstitusi ini, kami memberikan akses pendidikan berkualitas mulai dari tingkat dasar hingga perguruan tinggi, memastikan tidak ada anak yang tertinggal dalam mendapatkan hak pendidikannya.</p>
+            <p>Sistem pendidikan kami menggabungkan kurikulum nasional dengan nilai-nilai keislaman, menggunakan metode pembelajaran modern dengan teknologi terkini untuk hasil yang optimal dalam membentuk generasi yang cerdas, berakhlak, dan terampil.</p>
+        </div>
+    </section>
+
+    <!-- Pengabdian Section -->
+    <section id="pengabdian">
+        <div class="content">
+            <h2>Pengabdian Masyarakat</h2>
+            <p>Panti Asuhan Wisma Karya Bakti berupaya membantu bukan hanya anak-anak asuh kami namun berupaya juga berbagi kepada kalangan masyarakat yang memang membutuhkan.</p>
+            <p>Kami berkomitmen untuk memberikan kontribusi positif kepada masyarakat melalui berbagai program pengabdian yang menyentuh berbagai aspek kehidupan sosial. Dengan semangat gotong royong dan kepedulian, kami hadir sebagai bagian dari solusi untuk permasalahan sosial di lingkungan sekitar.</p>
+            <div class="cards-container">
+                <div class="card">
+                    <h3>🎓 Pendidikan untuk Semua</h3>
+                    <p>Program beasiswa dan bantuan pendidikan untuk anak-anak kurang mampu di luar panti asuhan, memastikan akses pendidikan yang merata. Termasuk program Tahfidz dan pelatihan pertanian organik yang terbuka untuk umum.</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 Pelatihan Keterampilan</h3>
+                    <p>Pelatihan keterampilan untuk masyarakat sekitar agar memiliki bekal untuk meningkatkan taraf hidup dan kemandirian ekonomi. Program pelatihan pertanian organik, menjahit, komputer, dan kewirausahaan.</p>
+                </div>
+                <div class="card">
+                    <h3>❤️ Bantuan Sosial</h3>
+                    <p>Distribusi bantuan untuk keluarga dhuafa, fakir miskin, dan mereka yang membutuhkan di lingkungan sekitar panti asuhan. Bantuan rutin berupa sembako dan kebutuhan pokok.</p>
+                </div>
+                <div class="card">
+                    <h3>🌱 Pemberdayaan Ekonomi</h3>
+                    <p>Program pemberdayaan ekonomi masyarakat melalui pertanian organik dan wirausaha berbasis lingkungan berkelanjutan. Pendampingan usaha dan akses pasar untuk produk organik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sarjana Section -->
+    <section id="sarjana">
+        <div class="content">
+            <h2>Program Beasiswa Sarjana</h2>
+            <p>Program beasiswa sarjana bagi anak-anak panti asuhan merupakan sebuah inisiatif yang bertujuan untuk memberikan akses pendidikan tinggi kepada anak-anak yang tumbuh di panti asuhan. Program ini dirancang untuk membantu mereka mencapai gelar sarjana di berbagai perguruan tinggi, baik negeri maupun swasta.</p>
+            <p>Kami percaya bahwa pendidikan tinggi adalah kunci untuk membuka peluang masa depan yang lebih cerah. Melalui program ini, anak-anak asuh kami mendapatkan kesempatan yang sama untuk mengenyam pendidikan tinggi tanpa terbebani oleh keterbatasan ekonomi.</p>
+            <p><strong>Prestasi Membanggakan:</strong> Hari ini sebanyak 8 anak asuh sedang menjalani sidang skripsi untuk kelulusan sarjana. Ini adalah bukti nyata dari komitmen kami dalam membentuk generasi yang berpendidikan tinggi dan siap berkontribusi untuk bangsa.</p>
+            <p>Alumni sarjana kami tersebar di berbagai universitas ternama dan telah berkontribusi di berbagai bidang profesi. Prestasi akademik dan non-akademik yang membanggakan menjadi bukti kualitas pembinaan dan pendidikan yang kami berikan.</p>
+            <a href="https://wa.me/6282310338818?text=Assalamualaikum,%20saya%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20Program%20Beasiswa" class="btn">Lihat Prestasi Alumni</a>
+
+            <!-- Contact & Social Media Section -->
+            <div class="social-media-section">
+                <h3>Hubungi Kami</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/psaawkb.official?igsh=MTk4cHAxbm52aWc2" target="_blank" class="social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                        <div class="social-text">
+                            <span class="social-label">Instagram</span>
+                            <span class="social-value">@psaawkb.official</span>
+                        </div>
+                    </a>
+                    <a href="https://www.facebook.com/irgyesthama.irgyesthama" target="_blank" class="social-link facebook">
+                        <i class="fab fa-facebook"></i>
+                        <div class="social-text">
+                            <span class="social-label">Facebook</span>
+                            <span class="social-value">Irgyesthama Irgyesthama</span>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/@PSAAWKB" target="_blank" class="social-link youtube">
+                        <i class="fab fa-youtube"></i>
+                        <div class="social-text">
+                            <span class="social-label">YouTube</span>
+                            <span class="social-value">PSAA WKB</span>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/6282310338818" target="_blank" class="social-link whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="social-text">
+                            <span class="social-label">WhatsApp</span>
+                            <span class="social-value">0823-1033-8818</span>
+                        </div>
+                    </a>
+                    <a href="mailto:[email protected]" class="social-link email">
+                        <i class="fas fa-envelope"></i>
+                        <div class="social-text">
+                            <span class="social-label">Email</span>
+                            <span class="social-value">[email protected]</span>
+                        </div>
+                    </a>
+                    <a href="https://share.google/Na8jsDfBUCi5j6hNK" target="_blank" class="social-link location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="social-text">
+                            <span class="social-label">Alamat</span>
+                            <span class="social-value">Jl. Curug Sawangan RT003/01, Curug Bojongsari, Depok 1, Jawa Barat</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="bank-info">
+                    <div class="bank-card">
+                        <i class="fas fa-university"></i>
+                        <h4>Bank BRI</h4>
+                        <p>a.n. Panti Asuhan Wisma Karya Bakti</p>
+                        <p class="account-number">0809-01-024340-53-5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Panti Asuhan Wisma Karya Bakti - Yayasan Oto Iskandar Dinata</p>
+        <p>Semua Hak Cipta Dilindungi | Memberikan Harapan, Membentuk Masa Depan</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling untuk navigasi
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animasi saat scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
